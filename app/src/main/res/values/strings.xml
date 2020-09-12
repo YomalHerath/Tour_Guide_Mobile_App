@@ -3,4 +3,22 @@
     <string name="logo_name">Get A Way</string>
     <string name="slogan_name">We will help you to find your way</string>
     <string name="powered_by">Powered by Code Warriors</string>
+
+    <!--    String for On Board Screen-->
+
+    <!--    Titles-->
+    <string name="first_slide_title">Search Your Location</string>
+    <string name="second_slide_title">Make A Call</string>
+    <string name="third_slide_title">Sit Back And Enjoy</string>
+
+    <!--    Description-->
+    <string name="first_slide_desc">You can search any places you looking. We will display all the specific or all related details about the location</string>
+    <string name="second_slide_desc">We provide all the numbers all the details of all departments and shops registered with us.</string>
+    <string name="third_slide_desc">We will handle every thing for you. As You have the app in your pocket then you don\'t have to worry</string>
+
+    <!--    Buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Lets Get Started</string>
+
 </resources>

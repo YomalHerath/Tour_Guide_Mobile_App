@@ -3,6 +3,7 @@ package com.example.tour_guide.Common;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -24,6 +25,8 @@ public class SplashScreen extends AppCompatActivity {
 
     //Animations
     Animation sideAnim, bottomAnim;
+
+    SharedPreferences onBoardingScreen;
 
 
     @Override
@@ -47,9 +50,30 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, UserDashboard.class);
+
+                onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
+                boolean isFirstTime = onBoardingScreen.getBoolean("firstTime",true);
+
+                if(isFirstTime){
+
+                    SharedPreferences.Editor editor = onBoardingScreen.edit();
+                    editor.putBoolean("firstTime", false);
+                    editor.commit();
+
+                    Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+                Intent intent = new Intent(SplashScreen.this, OnBoarding.class);
                 startActivity(intent);
                 finish();
+
             }
         },SPLASH_TIME);
     }
