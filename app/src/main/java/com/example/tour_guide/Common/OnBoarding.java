@@ -57,6 +57,11 @@ public class OnBoarding extends AppCompatActivity {
         viewPager.setCurrentItem(currentPos + 1);
     }
 
+    public void getStarted(View view) {
+        startActivity(new Intent(this, UserDashboard.class));
+        finish();
+    }
+
     private void addDots(int position) {
 
         dots = new TextView[3];

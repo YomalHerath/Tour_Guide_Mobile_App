@@ -21,4 +21,16 @@
     <string name="next_btn">Next</string>
     <string name="let_get_started">Lets Get Started</string>
 
+    <!--    DashBoard-->
+
+    <!--    Titles-->
+    <string name="travel">Travelling Places</string>
+    <string name="hotel_and_restaurant">Hotels/ Restaurants</string>
+    <string name="event">Travel Events</string>
+    <string name="travel_review">Travel Review</string>
+
+    <!--    Buttons-->
+    <string name="view">VIEW</string>
+
+
 </resources>
