@@ -44,7 +44,12 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     }
 
+    //View All Places
+    public void viewPlaceCategories(View view) {
+        startActivity(new Intent(getApplicationContext(), TravellingPlacesCategories.class));
+    }
 
+    //View Categories from Navigation View
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:

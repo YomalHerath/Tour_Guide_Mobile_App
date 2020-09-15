@@ -29,10 +29,12 @@
         android:src="@drawable/srilanka_travel" />
 
     <ImageView
-        android:layout_width="168dp"
+        android:layout_width="254dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginRight="-4dp"
+        android:layout_marginBottom="44dp"
         android:src="@drawable/car_travel" />
 
 </RelativeLayout>
