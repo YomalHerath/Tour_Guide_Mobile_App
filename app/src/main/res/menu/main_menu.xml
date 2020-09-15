@@ -8,6 +8,13 @@
             android:title="@string/home"/>
     </group>
 
+    <group android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/nav_place_categories"
+            android:id="@+id/nav_place_categories"
+            android:title="@string/place_categories"/>
+    </group>
+
     <item android:title="Profile">
         <menu>
 

@@ -1,5 +1,6 @@
 package com.example.tour_guide.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +44,16 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     }
 
+
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                startActivity(new Intent(getApplicationContext(), UserDashboard.class));
+                break;
+            case R.id.nav_place_categories:
+                startActivity(new Intent(getApplicationContext(), TravellingPlacesCategories.class));
+                break;
+        }
         return true;
     }
 
@@ -55,10 +65,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
-        menuIcon.setOnClickListener(new View.OnClickListener(){
+        menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                if(drawerLayout.isDrawerVisible(GravityCompat.START))
+            public void onClick(View view) {
+                if (drawerLayout.isDrawerVisible(GravityCompat.START))
                     drawerLayout.closeDrawer(GravityCompat.START);
                 else drawerLayout.openDrawer(GravityCompat.START);
             }
