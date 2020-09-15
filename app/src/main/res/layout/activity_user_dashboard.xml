@@ -91,13 +91,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:background="@drawable/light_blue_card">
+                        android:background="@color/card1">
 
                         <ImageView
                             android:layout_width="150dp"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="20dp"
-                            android:src="@drawable/travel_icon" />
+                            android:layout_marginLeft="5dp"
+                            android:src="@drawable/travel_places_icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -139,13 +139,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:background="@drawable/light_orange_card">
+                        android:background="@color/card2">
 
                         <ImageView
                             android:layout_width="150dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="20dp"
-                            android:src="@drawable/hotel_icon" />
+                            android:src="@drawable/hotels_icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -186,13 +186,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:background="@drawable/light_purple_card">
+                        android:background="@color/card3">
 
                         <ImageView
                             android:layout_width="150dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="20dp"
-                            android:src="@drawable/event_icon" />
+                            android:src="@drawable/events_icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -233,13 +233,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:background="@drawable/light_yellow_card">
+                        android:background="@color/card4">
 
                         <ImageView
                             android:layout_width="150dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="20dp"
-                            android:src="@drawable/travel_review_icon" />
+                            android:src="@drawable/review_icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
