@@ -7,4 +7,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="navigationTheme">
+    <!--Navigation text Color-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+    <!--Navigation background color-->
+        <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
+
 </resources>

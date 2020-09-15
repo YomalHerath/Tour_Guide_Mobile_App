@@ -1,7 +1,5 @@
 package com.example.tour_guide.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -12,6 +10,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.tour_guide.HelperClasses.SliderAdapter;
 import com.example.tour_guide.R;
@@ -53,13 +54,13 @@ public class OnBoarding extends AppCompatActivity {
         finish();
     }
 
-    public void next(View view) {
-        viewPager.setCurrentItem(currentPos + 1);
-    }
-
     public void getStarted(View view) {
         startActivity(new Intent(this, UserDashboard.class));
         finish();
+    }
+
+    public void next(View view) {
+        viewPager.setCurrentItem(currentPos + 1);
     }
 
     private void addDots(int position) {
