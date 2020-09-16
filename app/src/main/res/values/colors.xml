@@ -14,8 +14,8 @@
     <color name="banner_background_light">#56F1E9CE</color>
 
 <!--    Color Cards-->
-    <color name="card1">#C39BD3</color>
-    <color name="card2">#85C1E9 </color>
+    <color name="card1">#85C1E9</color>
+    <color name="card2">#C39BD3 </color>
     <color name="card3">#82E0AA</color>
     <color name="card4">#F8C471</color>
 

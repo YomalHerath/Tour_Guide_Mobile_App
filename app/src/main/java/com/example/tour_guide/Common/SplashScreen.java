@@ -1,7 +1,5 @@
 package com.example.tour_guide.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,8 +10,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.tour_guide.R;
-import com.example.tour_guide.User.UserDashboard;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -32,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_screen);
 
         //Hocks
@@ -41,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
 
         //Animations
         sideAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);
-        bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_anim);
+        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
 
         //Set Animation on Elements
         backgroundImage.setAnimation(sideAnim);
@@ -52,9 +51,9 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
 
                 onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
-                boolean isFirstTime = onBoardingScreen.getBoolean("firstTime",true);
+                boolean isFirstTime = onBoardingScreen.getBoolean("firstTime", true);
 
-                if(isFirstTime){
+                if (isFirstTime) {
 
                     SharedPreferences.Editor editor = onBoardingScreen.edit();
                     editor.putBoolean("firstTime", false);
@@ -63,8 +62,7 @@ public class SplashScreen extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
                     startActivity(intent);
                     finish();
-                }
-                else {
+                } else {
                     Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
                     startActivity(intent);
                     finish();
@@ -75,6 +73,6 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
 
             }
-        },SPLASH_TIME);
+        }, SPLASH_TIME);
     }
 }
