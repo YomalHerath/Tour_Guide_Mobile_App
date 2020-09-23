@@ -22,10 +22,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     static final float END_SCALE = 0.7f;
 
     //Drawer Menu
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ImageView menuIcon;
-    LinearLayout contentView;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ImageView menuIcon;
+    private LinearLayout contentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

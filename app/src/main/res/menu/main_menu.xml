@@ -3,36 +3,34 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:icon="@drawable/menu_dashboard_icon"
             android:id="@+id/nav_home"
-            android:title="@string/home"/>
+            android:icon="@drawable/menu_dashboard_icon"
+            android:title="@string/home" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:icon="@drawable/nav_place_categories"
             android:id="@+id/nav_place_categories"
-            android:title="@string/place_categories"/>
+            android:icon="@drawable/nav_place_categories"
+            android:title="@string/place_categories" />
     </group>
 
     <item android:title="Profile">
         <menu>
-
             <group android:checkableBehavior="single">
                 <item
-                    android:icon="@drawable/menu_login_icon"
                     android:id="@+id/nav_login"
+                    android:icon="@drawable/menu_login_icon"
                     android:title="@string/login" />
                 <item
-                    android:icon="@drawable/menu_profile_icon"
                     android:id="@+id/nav_profile"
+                    android:icon="@drawable/menu_profile_icon"
                     android:title="@string/profile" />
                 <item
-                    android:icon="@drawable/menu_logout_icon"
                     android:id="@+id/nav_logout"
+                    android:icon="@drawable/menu_logout_icon"
                     android:title="@string/logout" />
             </group>
-
         </menu>
     </item>
 

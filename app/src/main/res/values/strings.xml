@@ -35,6 +35,9 @@
     <!--    Main Menu-->
     <string name="home">Home</string>
     <string name="place_categories">All Places</string>
+    <string name="add_places">Add Missing Places</string>
+    <string name="add_hotels">Add Hotel/Restaurant</string>
+    <string name="add_events">Add Missing Events</string>
 
     <string name="login">Login</string>
     <string name="profile">Profile</string>
@@ -48,4 +51,17 @@
 
     <!--    Travelling Places Button-->
     <string name="expand_all">Expand All</string>
+
+    <!--    Add Places Form-->
+    <string name="add_travel_place">Add Travelling Place</string>
+    <string name="submit">Submit</string>
+    <string name="choose">Choose</string>
+
+    <!--    Edit Places From-->
+    <string name="edit_travel_place">Edit Travelling Place</string>
+    <string name="update">Update</string>
+
+    <!--    Place Details-->
+    <string name="description">Description</string>
+    <string name="province">Situated In</string>
 </resources>

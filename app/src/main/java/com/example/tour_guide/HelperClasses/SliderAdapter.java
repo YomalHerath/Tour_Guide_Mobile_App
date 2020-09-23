@@ -15,26 +15,25 @@ import com.example.tour_guide.R;
 
 public class SliderAdapter extends PagerAdapter {
 
-    Context context;
-    LayoutInflater layoutInflater;
+    private Context context;
 
     public SliderAdapter(Context context) {
         this.context = context;
     }
 
-    int images[] = {
+    int[] images = {
             R.drawable.travel_search,
             R.drawable.travel_hospitality,
             R.drawable.travel
     };
 
-    int headings[] = {
+    int[] headings = {
             R.string.first_slide_title,
             R.string.second_slide_title,
             R.string.third_slide_title
     };
 
-    int descriptions[] = {
+    int[] descriptions = {
             R.string.first_slide_desc,
             R.string.second_slide_desc,
             R.string.third_slide_desc
@@ -54,7 +53,7 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slides_layout, container, false);
 
         //Hocks
