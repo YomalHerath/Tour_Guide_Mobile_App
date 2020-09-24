@@ -119,6 +119,7 @@ public class AddTravellingPlace extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(AddTravellingPlace.this, "Data Successfully Uploaded", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), TravellingPlaces.class));
+                                finish();
                             }
                         });
                     }

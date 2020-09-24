@@ -82,6 +82,7 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 startActivity(new Intent(getApplicationContext(), TravellingPlaces.class));
                                 Toast.makeText(AdminViewPlaceDetails.this, "Delete Completed...", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         });
                     }

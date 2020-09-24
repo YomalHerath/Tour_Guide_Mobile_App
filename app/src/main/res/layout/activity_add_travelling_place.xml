@@ -69,7 +69,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
             <EditText
@@ -80,6 +80,7 @@
                 android:overScrollMode="always"
                 android:hint="Add description of place"
                 android:inputType="textMultiLine"
+                android:minHeight="100dp"
                 android:padding="10dp" />
 
         </RelativeLayout>

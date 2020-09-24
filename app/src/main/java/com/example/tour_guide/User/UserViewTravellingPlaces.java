@@ -1,5 +1,6 @@
 package com.example.tour_guide.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,12 +34,13 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
     DrawerLayout drawerLayout;
     RecyclerView recyclerView;
     FirebaseRecyclerOptions<AddPlace> options;
-    FirebaseRecyclerAdapter<AddPlace, UserHolder> adapter;
+    FirebaseRecyclerAdapter<AddPlace, UserHolder>adapter;
     DatabaseReference databaseReference;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_view_travelling_places);
@@ -74,7 +76,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.toString() != null) {
+                if(editable.toString()!=null){
                     LoadData(editable.toString());
                 } else {
                     LoadData("");
@@ -89,22 +91,38 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
         options = new FirebaseRecyclerOptions.Builder<AddPlace>().setQuery(query, AddPlace.class).build();
         adapter = new FirebaseRecyclerAdapter<AddPlace, UserHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull AddPlace model) {
+            protected void onBindViewHolder(@NonNull UserHolder holder, final int position, @NonNull AddPlace model) {
                 holder.textViewName.setText(model.getPlaceName());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
+
+                holder.imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(UserViewTravellingPlaces.this, UserViewTravellingPlaceDetails.class);
+                        intent.putExtra("PlaceKey",getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
+                holder.textViewName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(UserViewTravellingPlaces.this, UserViewTravellingPlaceDetails.class);
+                        intent.putExtra("PlaceKey",getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull
             @Override
             public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_place_item, parent, false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_place_item,parent,false);
                 return new UserHolder(v);
             }
         };
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
-
     public void onBackPressed() {
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
