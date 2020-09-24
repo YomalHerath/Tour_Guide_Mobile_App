@@ -13,11 +13,13 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView textViewName;
     TextView textViewDesc;
+    View v;
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.placeImgView);
         textViewName = itemView.findViewById(R.id.place_name_textView);
         textViewDesc = itemView.findViewById(R.id.place_desc_textView);
+        v = itemView;
     }
 }

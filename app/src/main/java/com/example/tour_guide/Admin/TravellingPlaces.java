@@ -1,5 +1,6 @@
 package com.example.tour_guide.Admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,10 +63,19 @@ public class TravellingPlaces extends AppCompatActivity {
         options = new FirebaseRecyclerOptions.Builder<AddPlace>().setQuery(databaseReference, AddPlace.class).build();
         adapter = new FirebaseRecyclerAdapter<AddPlace, MyViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull AddPlace model) {
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull AddPlace model) {
                 holder.textViewName.setText(model.getPlaceName());
                 holder.textViewDesc.setText(model.getDescription());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
+
+                holder.v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(TravellingPlaces.this, AdminViewPlaceDetails.class);
+                        intent.putExtra("PlaceKey",getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull
