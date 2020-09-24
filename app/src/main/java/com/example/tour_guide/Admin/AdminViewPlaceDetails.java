@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 public class AdminViewPlaceDetails extends AppCompatActivity {
 
     ImageView imageView;
-    TextView textViewName, textViewProvince, textViewDesc, textViewType;
+    TextView textViewName, textViewProvince, textViewDesc;
     Button delete;
 
     DatabaseReference ref, databaseReference;
@@ -40,19 +40,19 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
         textViewName = findViewById(R.id.admin_place_name_view);
         textViewDesc = findViewById(R.id.admin_place_desc_view);
         textViewProvince = findViewById(R.id.admin_province_view);
-        textViewType = findViewById(R.id.admin_category_type_view);
         delete = findViewById(R.id.delete);
+
         ref = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
 
         String PlaceKey = getIntent().getStringExtra("PlaceKey");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces").child("PlaceKey");
-        storageReference = FirebaseStorage.getInstance().getReference().child("TravelPlaces").child(PlaceKey+"jpg");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces").child(PlaceKey);
+        storageReference = FirebaseStorage.getInstance().getReference().child("TravelPlaces").child(PlaceKey + ".jpg");
 
         ref.child(PlaceKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String category = snapshot.child("Category").getValue().toString();
+                if (snapshot.exists()) {
                     String description = snapshot.child("Description").getValue().toString();
                     String imageUrl = snapshot.child("ImageUrl").getValue().toString();
                     String placeName = snapshot.child("PlaceName").getValue().toString();
@@ -62,7 +62,6 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
                     textViewName.setText(placeName);
                     textViewProvince.setText(province);
                     textViewDesc.setText(description);
-                    textViewType.setText(category);
                 }
             }
 
@@ -81,7 +80,7 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
                         storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                startActivity(new Intent(getApplicationContext(),TravellingPlaces.class));
+                                startActivity(new Intent(getApplicationContext(), TravellingPlaces.class));
                                 Toast.makeText(AdminViewPlaceDetails.this, "Delete Completed...", Toast.LENGTH_SHORT).show();
                             }
                         });

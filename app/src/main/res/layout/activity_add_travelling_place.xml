@@ -73,21 +73,6 @@
             android:layout_margin="10dp">
 
             <EditText
-                android:id="@+id/add_category_type"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Add Category type  Ex:historical,etc"
-                android:inputType="text"
-                android:padding="10dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp">
-
-            <EditText
                 android:id="@+id/add_place_desc"
                 android:layout_width="match_parent"
                 android:scrollbarStyle="insideInset"

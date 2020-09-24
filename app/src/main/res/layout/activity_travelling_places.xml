@@ -8,28 +8,18 @@
     tools:context=".Admin.TravellingPlaces"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
-
-        <ImageView
-            android:id="@+id/back_pressed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:padding="15dp"
-            android:src="@drawable/back_icon" />
-
-    </RelativeLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:text="All Added Travelling Places"
         android:textAllCaps="true"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:background="@color/colorPrimaryDark"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

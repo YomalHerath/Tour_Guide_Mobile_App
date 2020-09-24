@@ -46,7 +46,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     //View All Places
     public void viewPlaceCategories(View view) {
-        startActivity(new Intent(getApplicationContext(), TravellingPlacesCategories.class));
+        startActivity(new Intent(getApplicationContext(), UserViewTravellingPlaces.class));
     }
 
     //View Categories from Navigation View
@@ -56,7 +56,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(getApplicationContext(), UserDashboard.class));
                 break;
             case R.id.nav_place_categories:
-                startActivity(new Intent(getApplicationContext(), TravellingPlacesCategories.class));
+                startActivity(new Intent(getApplicationContext(), UserViewTravellingPlaces.class));
                 break;
         }
         return true;

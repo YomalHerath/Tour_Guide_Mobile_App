@@ -28,7 +28,7 @@ public class AddTravellingPlace extends AppCompatActivity {
 
     private static final int REQUEST_CODE_IMAGE = 101;
     private ImageView backButton, AddPlaceImage;
-    private EditText AddPlaceName, AddProvinceName, AddCategoryType, AddDesc;
+    private EditText AddPlaceName, AddProvinceName, AddDesc;
 
     private Button choose, submit;
     private StorageTask storageTask;
@@ -49,7 +49,6 @@ public class AddTravellingPlace extends AppCompatActivity {
         AddPlaceImage = findViewById(R.id.placeImg);
         AddPlaceName = findViewById(R.id.add_place_name);
         AddProvinceName = findViewById(R.id.add_province);
-        AddCategoryType = findViewById(R.id.add_category_type);
         AddDesc = findViewById(R.id.add_place_desc);
         choose = findViewById(R.id.choose_btn);
         submit = findViewById(R.id.add_travel_place_submit);
@@ -83,19 +82,18 @@ public class AddTravellingPlace extends AppCompatActivity {
                 final String placeName = AddPlaceName.getText().toString();
                 final String placeDescription = AddDesc.getText().toString();
                 final String placeProvince = AddProvinceName.getText().toString();
-                final String placeCategory = AddCategoryType.getText().toString();
 
                 if (storageTask != null && storageTask.isInProgress()) {
                     Toast.makeText(AddTravellingPlace.this, "Upload in progress", Toast.LENGTH_SHORT).show();
-                } else if (IsImageAdded != false && placeName != null && placeDescription != null && placeProvince != null && placeCategory != null) {
-                    uploadfile(placeName, placeCategory, placeDescription, placeProvince);
+                } else if (IsImageAdded != false && placeName != null && placeDescription != null && placeProvince != null) {
+                    uploadfile(placeName, placeDescription, placeProvince);
                 }
             }
         });
 
     }
 
-    private void uploadfile(final String placeName, final String placeCategory, final String placeDescription, final String placeProvince) {
+    private void uploadfile(final String placeName, final String placeDescription, final String placeProvince) {
 
         progressDialog.setTitle("Image is Uploading....");
         progressDialog.show();
@@ -111,7 +109,6 @@ public class AddTravellingPlace extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         HashMap hashMap = new HashMap();
                         hashMap.put("PlaceName", placeName);
-                        hashMap.put("Category", placeCategory);
                         hashMap.put("Description", placeDescription);
                         hashMap.put("Province", placeProvince);
                         hashMap.put("ImageUrl", uri.toString());
@@ -121,7 +118,7 @@ public class AddTravellingPlace extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 progressDialog.dismiss();
                                 Toast.makeText(AddTravellingPlace.this, "Data Successfully Uploaded", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), AdminDashboard.class));
+                                startActivity(new Intent(getApplicationContext(), TravellingPlaces.class));
                             }
                         });
                     }

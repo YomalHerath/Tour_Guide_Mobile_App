@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -32,12 +33,13 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
     DrawerLayout drawerLayout;
     RecyclerView recyclerView;
     FirebaseRecyclerOptions<AddPlace> options;
-    FirebaseRecyclerAdapter<AddPlace, UserHolder>adapter;
+    FirebaseRecyclerAdapter<AddPlace, UserHolder> adapter;
     DatabaseReference databaseReference;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_view_travelling_places);
 
@@ -72,7 +74,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(editable.toString()!=null){
+                if (editable.toString() != null) {
                     LoadData(editable.toString());
                 } else {
                     LoadData("");
@@ -95,13 +97,14 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
             @NonNull
             @Override
             public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_place_item,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_place_item, parent, false);
                 return new UserHolder(v);
             }
         };
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
+
     public void onBackPressed() {
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
