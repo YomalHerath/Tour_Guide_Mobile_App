@@ -85,8 +85,17 @@ public class AddTravellingPlace extends AppCompatActivity {
 
                 if (storageTask != null && storageTask.isInProgress()) {
                     Toast.makeText(AddTravellingPlace.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+
                 } else if (IsImageAdded != false && placeName != null && placeDescription != null && placeProvince != null) {
-                    uploadfile(placeName, placeDescription, placeProvince);
+                    if (placeName.isEmpty()) {
+                        AddPlaceName.setError("Required Field");
+                    } else if (placeDescription.isEmpty()) {
+                        AddDesc.setError("Required Field");
+                    } else if (placeProvince.isEmpty()) {
+                        AddPlaceName.setError("Required Field");
+                    } else {
+                        uploadfile(placeName, placeDescription, placeProvince);
+                    }
                 }
             }
         });
@@ -95,7 +104,7 @@ public class AddTravellingPlace extends AppCompatActivity {
 
     private void uploadfile(final String placeName, final String placeDescription, final String placeProvince) {
 
-        progressDialog.setTitle("Image is Uploading....");
+        progressDialog.setTitle("Travelling Place Adding....");
         progressDialog.show();
 
         final String key = databaseReference.push().getKey();

@@ -1,6 +1,7 @@
 package com.example.tour_guide.User;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,9 +22,11 @@ public class UserViewTravellingPlaceDetails extends AppCompatActivity {
     ImageView imageViewPlace;
 
     DatabaseReference ref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_view_travelling_place_details);
 
         textViewName = findViewById(R.id.user_place_name_view);
@@ -37,7 +40,7 @@ public class UserViewTravellingPlaceDetails extends AppCompatActivity {
         ref.child(PlaceKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                     String description = snapshot.child("Description").getValue().toString();
                     String imageUrl = snapshot.child("ImageUrl").getValue().toString();
                     String placeName = snapshot.child("PlaceName").getValue().toString();

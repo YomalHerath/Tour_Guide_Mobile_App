@@ -44,7 +44,7 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
 
         ref = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
 
-        String PlaceKey = getIntent().getStringExtra("PlaceKey");
+        final String PlaceKey = getIntent().getStringExtra("PlaceKey");
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces").child(PlaceKey);
         storageReference = FirebaseStorage.getInstance().getReference().child("TravelPlaces").child(PlaceKey + ".jpg");
@@ -89,6 +89,5 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
                 });
             }
         });
-
     }
 }

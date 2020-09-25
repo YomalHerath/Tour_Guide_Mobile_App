@@ -10,14 +10,14 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="36sp"
-        android:textColor="@color/black"
+        android:textColor="@color/lightWhite"
         android:text="Admin Dashboard"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"

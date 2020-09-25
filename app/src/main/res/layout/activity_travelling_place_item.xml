@@ -56,11 +56,11 @@
                         android:id="@+id/place_desc_textView"
                         android:scrollbarStyle="insideInset"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="110dp"
                         android:layout_below="@id/place_name_textView"
                         android:padding="5dp"
                         android:textColor="@color/black"
-                        android:background="@color/colorPrimary"/>
+                        android:background="@color/colorPrimaryDark"/>
 
                 </RelativeLayout>
 

@@ -34,15 +34,14 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
     DrawerLayout drawerLayout;
     RecyclerView recyclerView;
     FirebaseRecyclerOptions<AddPlace> options;
-    FirebaseRecyclerAdapter<AddPlace, UserHolder>adapter;
+    FirebaseRecyclerAdapter<AddPlace, UserHolder> adapter;
     DatabaseReference databaseReference;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_view_travelling_places);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
@@ -76,7 +75,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(editable.toString()!=null){
+                if (editable.toString() != null) {
                     LoadData(editable.toString());
                 } else {
                     LoadData("");
@@ -85,6 +84,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
         });
     }
 
+    //View All Travelling Places
     private void LoadData(String data) {
         Query query = databaseReference.orderByChild("PlaceName").startAt(data).endAt(data + "\uf8ff");
 
@@ -99,7 +99,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(UserViewTravellingPlaces.this, UserViewTravellingPlaceDetails.class);
-                        intent.putExtra("PlaceKey",getRef(position).getKey());
+                        intent.putExtra("PlaceKey", getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
@@ -107,7 +107,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(UserViewTravellingPlaces.this, UserViewTravellingPlaceDetails.class);
-                        intent.putExtra("PlaceKey",getRef(position).getKey());
+                        intent.putExtra("PlaceKey", getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
@@ -116,13 +116,14 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
             @NonNull
             @Override
             public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_place_item,parent,false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_place_item, parent, false);
                 return new UserHolder(v);
             }
         };
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
+
     public void onBackPressed() {
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
