@@ -61,7 +61,7 @@
                 android:id="@+id/add_province"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Add Province"
+                android:hint="Add Province and District"
                 android:inputType="text"
                 android:padding="10dp" />
 

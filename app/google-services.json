@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "118692789732-1fqodj019fk9flife9itv21govq7a63t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tour_guide",
+            "certificate_hash": "f491568f68ef2bf4c79efdb807d9fdb6b2ca9a31"
+          }
+        },
+        {
+          "client_id": "118692789732-d6rgaot7mvd6bkcq3qtbu07qc6ib0f9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tour_guide",
+            "certificate_hash": "36005cacee2a8f378eae2515602f38a4b07c8468"
+          }
+        },
+        {
           "client_id": "118692789732-uv2huiup1d5p0p5krcu8a527lbr9bfsa.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -92,7 +92,7 @@ public class AddTravellingPlace extends AppCompatActivity {
                     } else if (placeDescription.isEmpty()) {
                         AddDesc.setError("Required Field");
                     } else if (placeProvince.isEmpty()) {
-                        AddPlaceName.setError("Required Field");
+                        AddProvinceName.setError("Required Field");
                     } else {
                         uploadfile(placeName, placeDescription, placeProvince);
                     }

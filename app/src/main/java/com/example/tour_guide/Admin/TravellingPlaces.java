@@ -21,6 +21,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 public class TravellingPlaces extends AppCompatActivity {
@@ -84,7 +85,9 @@ public class TravellingPlaces extends AppCompatActivity {
 
     //View All Travelling Places
     private void LoadData(String data) {
-        options = new FirebaseRecyclerOptions.Builder<AddPlace>().setQuery(databaseReference, AddPlace.class).build();
+        Query query = databaseReference.orderByChild("PlaceName").startAt(data).endAt(data + "\uf8ff");
+
+        options = new FirebaseRecyclerOptions.Builder<AddPlace>().setQuery(query, AddPlace.class).build();
         adapter = new FirebaseRecyclerAdapter<AddPlace, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull AddPlace model) {
