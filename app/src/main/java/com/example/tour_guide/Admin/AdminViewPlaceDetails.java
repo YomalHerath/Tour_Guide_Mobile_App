@@ -36,7 +36,7 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_place_details);
 
-        imageView = findViewById(R.id.adminPlaceImg);
+        imageView = findViewById(R.id.adminEventImg);
         textViewName = findViewById(R.id.admin_place_name_view);
         textViewDesc = findViewById(R.id.admin_place_desc_view);
         textViewProvince = findViewById(R.id.admin_province_view);

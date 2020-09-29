@@ -15,7 +15,8 @@
         <activity android:name=".User.UserViewTravellingPlaceDetails" />
         <activity android:name=".User.UserViewTravellingPlaces" />
         <activity android:name=".Admin.AdminViewPlaceDetails" />
-        <activity android:name=".Admin.AdminDashboard">
+        <activity android:name=".Admin.AdminDashboard"></activity>
+        <activity android:name="Event.addEvent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +25,7 @@
         </activity>
         <activity android:name=".Admin.TravellingPlaces" />
         <activity android:name=".Admin.AddTravellingPlace" />
-        <activity android:name=".Common.OnBoarding"></activity>
+        <activity android:name=".Common.OnBoarding" />
         <activity android:name=".User.UserDashboard" />
         <activity android:name=".Common.SplashScreen" />
     </application>

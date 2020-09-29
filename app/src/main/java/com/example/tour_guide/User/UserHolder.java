@@ -12,12 +12,12 @@ import com.example.tour_guide.R;
 public class UserHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView textViewName;
-    View v;
+    View view;
 
     public UserHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.user_view_place_Img);
         textViewName = itemView.findViewById(R.id.user_view_place_name);
-        v = itemView;
+        view = itemView;
     }
 }
