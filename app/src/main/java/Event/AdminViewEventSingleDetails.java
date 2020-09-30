@@ -58,14 +58,14 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
                     String description = snapshot.child("Description").getValue().toString();
                     String province = snapshot.child("Province").getValue().toString();
                     String phone = snapshot.child("Phone").getValue().toString();
-                   // String price = snapshot.child("Price").getValue().toString();
+                    String price = snapshot.child("price").getValue().toString();
 
                     txtVEventName.setText(eventName);
                     Picasso.get().load(imageUrl).into(imageView);
                     txtVDesc.setText(description);
                     txtVLocInfo.setText(province);
                     txtVConInfo.setText(phone);
-                   // txtVPrice.setText(price);
+                    txtVPrice.setText(price);
                 }
             }
 
