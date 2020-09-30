@@ -15,8 +15,12 @@
         <activity android:name=".User.UserViewTravellingPlaceDetails" />
         <activity android:name=".User.UserViewTravellingPlaces" />
         <activity android:name=".Admin.AdminViewPlaceDetails" />
-        <activity android:name=".Admin.AdminDashboard"></activity>
-        <activity android:name="Event.addEvent">
+        <activity android:name=".Admin.AdminDashboard"/>
+        <activity android:name="UserEvents.User_View_Single_Event_Details"/>
+        <activity android:name="Event.addEvent"/>
+        <activity android:name="Event.AdminViewEventSingleDetails" />
+       <!--<activity android:name=""    UserEvents.User_View_All_Events>-->
+        <activity android:name="Event.admin_view_All_Events">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

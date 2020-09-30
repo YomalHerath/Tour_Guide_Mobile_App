@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.tour_guide.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -45,12 +44,12 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
         delete = findViewById(R.id.deleteBtn);
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Events");
-        final String PlaceKey = getIntent().getStringExtra("PlaceKey");
+        final String EventKey = getIntent().getStringExtra("EventKey");
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Events");
         storageReference = FirebaseStorage.getInstance().getReference().child("Events");
 
-        dbRef.child(PlaceKey).addValueEventListener(new ValueEventListener() {
+        dbRef.child(EventKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -59,16 +58,14 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
                     String description = snapshot.child("Description").getValue().toString();
                     String province = snapshot.child("Province").getValue().toString();
                     String phone = snapshot.child("Phone").getValue().toString();
-                    //String price = snapshot.child("Price").getValue().toString();
+                   // String price = snapshot.child("Price").getValue().toString();
 
                     txtVEventName.setText(eventName);
                     Picasso.get().load(imageUrl).into(imageView);
                     txtVDesc.setText(description);
                     txtVLocInfo.setText(province);
                     txtVConInfo.setText(phone);
-                    //txtVPrice.setText(price);
-                    //txtVEventName.setText(eventName);
-
+                   // txtVPrice.setText(price);
                 }
             }
 

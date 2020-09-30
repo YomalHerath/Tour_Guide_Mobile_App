@@ -94,8 +94,16 @@ public class addEvent extends AppCompatActivity {
 
                 if (storageTask != null && storageTask.isInProgress()) {
                     Toast.makeText(addEvent.this, "Upload in progress", Toast.LENGTH_LONG).show();
-                } else if (IsImageAdded != false && addEvntName != null && addPlace != null && provinceName != null
+                }else if (IsImageAdded != false && addEvntName != null && addPlace != null && provinceName != null
                         && cityName != null && personName != null && contact != null && eventPrice != null && des != null) {
+                    //check whether fields are empty or not
+                    /*if(addEvntName.isEmpty()){
+                        eventName.setError("Event name is Required");
+                    }else if(placeName.isEmpty()){
+                        placeName.setError("Event name is Required");
+                    }else if(province.isEmpty()){
+
+                    }*/
                     uploadFile(addEvntName,addPlace, provinceName, cityName, personName, contact, eventPrice, des);
                 }
             }
@@ -131,7 +139,7 @@ public class addEvent extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 progressDialog.dismiss();
                                 Toast.makeText(addEvent.this, "Data Added Successfully !", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(getApplicationContext(), addEvent.class));
+                                startActivity(new Intent(getApplicationContext(), admin_view_All_Events.class));
                             }
                         });
                     }

@@ -13,8 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import Event.MyViewHolder;
-import Event.addNewEvent;
+
 import com.example.tour_guide.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -28,7 +27,7 @@ public class admin_view_All_Events extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton floatingActionButton;
     FirebaseRecyclerOptions<addNewEvent> options;
-    FirebaseRecyclerAdapter<addNewEvent, MyViewHolder> adapter;
+    FirebaseRecyclerAdapter<addNewEvent, EventViewHolder> adapter;
 
     //FireBase Reference
     DatabaseReference databaseReference;
@@ -42,6 +41,7 @@ public class admin_view_All_Events extends AppCompatActivity {
         inputSearch = findViewById(R.id.search);
 
         recyclerView = findViewById(R.id.recyclerView);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
 
@@ -58,7 +58,6 @@ public class admin_view_All_Events extends AppCompatActivity {
         //searching
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
-            //public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
@@ -82,10 +81,10 @@ public class admin_view_All_Events extends AppCompatActivity {
     //View All the Events
     private void LoadData(String d) {
         options = new FirebaseRecyclerOptions.Builder<addNewEvent>().setQuery(databaseReference, addNewEvent.class).build();
-        adapter = new FirebaseRecyclerAdapter<addNewEvent, MyViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<addNewEvent, EventViewHolder>(options) {
 
             @Override
-            protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull addNewEvent model) {
+            protected void onBindViewHolder(@NonNull EventViewHolder holder, final int position, @NonNull addNewEvent model) {
                 holder.txtVEventName.setText(model.getEventName());
                 holder.txtVDesc.setText(model.getDescription());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
@@ -96,7 +95,7 @@ public class admin_view_All_Events extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(admin_view_All_Events.this, AdminViewEventSingleDetails.class);
-                        intent.putExtra("PlaceKey", getRef(position).getKey());
+                        intent.putExtra("EventKey", getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
@@ -106,7 +105,7 @@ public class admin_view_All_Events extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(admin_view_All_Events.this, AdminViewEventSingleDetails.class);
-                        intent.putExtra("PlaceKey", getRef(position).getKey());
+                        intent.putExtra("EventKey", getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
@@ -115,7 +114,7 @@ public class admin_view_All_Events extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(admin_view_All_Events.this, AdminViewEventSingleDetails.class);
-                        intent.putExtra("PlaceKey", getRef(position).getKey());
+                        intent.putExtra("EventKey", getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
@@ -124,9 +123,9 @@ public class admin_view_All_Events extends AppCompatActivity {
 
             @NonNull
             @Override
-            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_items, parent, false);
-                return new MyViewHolder(v);
+                return new EventViewHolder(v);
             }
         };
         adapter.startListening();
