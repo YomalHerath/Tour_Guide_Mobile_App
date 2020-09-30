@@ -7,17 +7,6 @@ public class addNewEvent {
     public addNewEvent() {
     }
 
-    public addNewEvent(String eventName, String placeName, String province, String city, String name, String phone, String price, String description, String imageUrl) {
-        this.eventName = eventName;
-        this.placeName = placeName;
-        this.province = province;
-        this.city = city;
-        this.name = name;
-        this.phone = phone;
-        this.price = price;
-        this.description = description;
-        ImageUrl = imageUrl;
-    }
 
     public String getEventName() {
         return eventName;

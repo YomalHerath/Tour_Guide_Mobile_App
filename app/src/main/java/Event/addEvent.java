@@ -64,6 +64,7 @@ public class addEvent extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference().child("Events");
         storeRef = FirebaseStorage.getInstance().getReference().child("Events");
 
+        //back button
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +72,7 @@ public class addEvent extends AppCompatActivity {
             }
         });
 
+        //Choose Image
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,14 +98,7 @@ public class addEvent extends AppCompatActivity {
                     Toast.makeText(addEvent.this, "Upload in progress", Toast.LENGTH_LONG).show();
                 }else if (IsImageAdded != false && addEvntName != null && addPlace != null && provinceName != null
                         && cityName != null && personName != null && contact != null && eventPrice != null && des != null) {
-                    //check whether fields are empty or not
-                    /*if(addEvntName.isEmpty()){
-                        eventName.setError("Event name is Required");
-                    }else if(placeName.isEmpty()){
-                        placeName.setError("Event name is Required");
-                    }else if(province.isEmpty()){
-
-                    }*/
+                    //need to add, required fields
                     uploadFile(addEvntName,addPlace, provinceName, cityName, personName, contact, eventPrice, des);
                 }
             }

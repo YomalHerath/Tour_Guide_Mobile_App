@@ -21,7 +21,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private Context context;
     private List<AddPlace> addPlaceList;
 
-    public RecyclerAdapter(Context context, List<AddPlace> addPlaceList) {
+    public RecyclerAdapter(Context context, List<AddPlace>  addPlaceList) {
         this.context = context;
         this.addPlaceList = addPlaceList;
     }

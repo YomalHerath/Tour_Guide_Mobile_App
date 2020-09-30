@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 public class admin_view_All_Events extends AppCompatActivity {
@@ -79,7 +81,10 @@ public class admin_view_All_Events extends AppCompatActivity {
     }
 
     //View All the Events
-    private void LoadData(String d) {
+    private void LoadData(String data) {
+
+        Query query = databaseReference.orderByChild("EventName").startAt(data).endAt(data + "\uf8ff");
+
         options = new FirebaseRecyclerOptions.Builder<addNewEvent>().setQuery(databaseReference, addNewEvent.class).build();
         adapter = new FirebaseRecyclerAdapter<addNewEvent, EventViewHolder>(options) {
 
@@ -88,7 +93,6 @@ public class admin_view_All_Events extends AppCompatActivity {
                 holder.txtVEventName.setText(model.getEventName());
                 holder.txtVDesc.setText(model.getDescription());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
-
 
                 //Direct to the Events details screen
                 holder.txtVEventName.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +124,6 @@ public class admin_view_All_Events extends AppCompatActivity {
                 });
 
             }
-
             @NonNull
             @Override
             public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/lightWhite"
     android:orientation="vertical"
-    tools:context="Event.insert_Event">
+    tools:context="Event.addEvent">
 
     <LinearLayout
         android:layout_width="match_parent"

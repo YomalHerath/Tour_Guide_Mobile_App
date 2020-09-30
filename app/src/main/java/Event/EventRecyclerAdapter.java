@@ -57,7 +57,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 
         ImageView imageView;
         TextView textView;
-        TextView textView1;
+        TextView  textView1;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
