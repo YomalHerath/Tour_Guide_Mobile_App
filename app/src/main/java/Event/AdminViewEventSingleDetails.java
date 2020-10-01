@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 
 public class AdminViewEventSingleDetails extends AppCompatActivity {
     ImageView imageView;
-    TextView txtVEventName, txtVLocInfo, txtVConInfo,txtVPrice, txtVDesc;
+    TextView txtVEventName, txtVLocInfo, txtVConInfo,txtVPrice, txtVDesc, txtVLocPlaceName, txtVLocCity, txtVConPersonName;
     Button delete;
 
     DatabaseReference databaseReference, dbRef;
@@ -40,6 +40,9 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
         imageView = findViewById(R.id.adminEventImg);
         txtVDesc = findViewById(R.id.descriptionView);
         txtVLocInfo = findViewById(R.id.admin_eventLocInfo);
+        txtVLocPlaceName = findViewById(R.id.admin_event_locPlaceName);
+        txtVLocCity = findViewById(R.id.admin_eventLocCityName);
+        txtVConPersonName = findViewById(R.id.admin_eventConPersonName);
         txtVConInfo = findViewById(R.id.admin_eventConInfo);
         txtVPrice = findViewById(R.id.admin_eventPrice);
         delete = findViewById(R.id.delete);
@@ -57,7 +60,10 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
                     String eventName = snapshot.child("EventName").getValue().toString();
                     String imageUrl = snapshot.child("ImageUrl").getValue().toString();
                     String description = snapshot.child("Description").getValue().toString();
+                    String placeName = snapshot.child("PlaceName").getValue().toString();
+                    String cityName = snapshot.child("City").getValue().toString();
                     String province = snapshot.child("Province").getValue().toString();
+                    String personName = snapshot.child("PersonName").getValue().toString();
                     String phone = snapshot.child("Phone").getValue().toString();
                     String price = snapshot.child("price").getValue().toString();
 
@@ -65,6 +71,9 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
                     Picasso.get().load(imageUrl).into(imageView);
                     txtVDesc.setText(description);
                     txtVLocInfo.setText(province);
+                    txtVLocPlaceName.setText(placeName);
+                    txtVLocCity.setText(cityName);
+                    txtVConPersonName.setText(personName);
                     txtVConInfo.setText(phone);
                     txtVPrice.setText(price);
                 }

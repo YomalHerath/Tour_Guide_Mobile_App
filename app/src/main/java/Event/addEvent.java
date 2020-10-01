@@ -98,8 +98,33 @@ public class addEvent extends AppCompatActivity {
                     Toast.makeText(addEvent.this, "Upload in progress", Toast.LENGTH_LONG).show();
                 }else if (IsImageAdded != false && addEvntName != null && addPlace != null && provinceName != null
                         && cityName != null && personName != null && contact != null && eventPrice != null && des != null) {
-                    //need to add, required fields
-                    uploadFile(addEvntName,addPlace, provinceName, cityName, personName, contact, eventPrice, des);
+                    if(addEvntName.isEmpty()){
+                        eventName.setError("Required");
+                        Toast.makeText(addEvent.this, "Event Name cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else if(addPlace.isEmpty()){
+                        placeName.setError("Required");
+                        Toast.makeText(addEvent.this, "Place Name cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else if(provinceName.isEmpty()){
+                        province.setError("Required");
+                        Toast.makeText(addEvent.this, "Province cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else if(cityName.isEmpty()){
+                        city.setError("Required");
+                        Toast.makeText(addEvent.this, "City cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else if(personName.isEmpty()){
+                        name.setError("Required");
+                        Toast.makeText(addEvent.this, "Person Name cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else if(contact.isEmpty()){
+                        phone.setError("Required");
+                        Toast.makeText(addEvent.this, "Contact No cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else if(eventPrice.isEmpty()) {
+                        price.setError("Required");
+                        Toast.makeText(addEvent.this, "Price cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else if(des.isEmpty()) {
+                        description.setError("Required");
+                        Toast.makeText(addEvent.this, "Description cannot be Empty !", Toast.LENGTH_LONG).show();
+                    }else {
+                        uploadFile(addEvntName, addPlace, provinceName, cityName, personName, contact, eventPrice, des);
+                    }
                 }
             }
         });

@@ -100,8 +100,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
+            <!--Place Name-->
             <TextView
-                android:id="@+id/user_Event_locInfo_view"
+                android:id="@+id/user_Event_locPlaceName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="always"
@@ -111,6 +112,31 @@
                 android:textSize="16sp"
                 android:textStyle="italic" />
 
+            <!--City Name-->
+            <TextView
+                android:id="@+id/user_Event_locCityName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="always"
+                android:padding="10dp"
+                android:layout_below="@+id/user_Event_locPlaceName"
+                android:scrollbarStyle="insideInset"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="italic" />
+
+            <!--Province-->
+            <TextView
+                android:id="@+id/user_Event_locInfo_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="always"
+                android:padding="10dp"
+                android:layout_below="@+id/user_Event_locCityName"
+                android:scrollbarStyle="insideInset"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="italic" />
 
         </RelativeLayout>
 
@@ -139,11 +165,23 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
+            <!--Contact Person Name-->
+            <TextView
+                android:id="@+id/user_Event_PersonName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="italic" />
+
+            <!--Contact No-->
             <TextView
                 android:id="@+id/user_Event_conInfo_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
+                android:layout_below="@+id/user_Event_PersonName"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="italic" />
@@ -167,6 +205,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
+            <!--Price-->
             <TextView
                 android:id="@+id/user_Event_price_view"
                 android:layout_width="match_parent"

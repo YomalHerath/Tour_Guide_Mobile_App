@@ -90,7 +90,7 @@
             android:layout_margin="10dp">
 
             <TextView
-                android:id="@+id/admin_eventLocInfo"
+                android:id="@+id/admin_event_locPlaceName"
                 android:layout_width="match_parent"
                 android:scrollbarStyle="insideInset"
                 android:layout_height="match_parent"
@@ -99,6 +99,31 @@
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/admin_eventLocInfo"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/admin_event_locPlaceName"
+                android:scrollbarStyle="insideInset"
+                android:layout_height="match_parent"
+                android:overScrollMode="always"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/admin_eventLocCityName"
+                android:layout_width="match_parent"
+                android:layout_below="@id/admin_eventLocInfo"
+                android:scrollbarStyle="insideInset"
+                android:layout_height="match_parent"
+                android:overScrollMode="always"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
 
         </RelativeLayout>
 
@@ -119,10 +144,22 @@
             android:layout_margin="10dp">
 
             <TextView
+                android:id="@+id/admin_eventConPersonName"
+                android:layout_width="match_parent"
+                android:scrollbarStyle="insideInset"
+                android:layout_height="match_parent"
+                android:overScrollMode="always"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
+            <TextView
                 android:id="@+id/admin_eventConInfo"
                 android:layout_width="match_parent"
                 android:scrollbarStyle="insideInset"
                 android:layout_height="match_parent"
+                android:layout_below="@id/admin_eventConPersonName"
                 android:overScrollMode="always"
                 android:padding="10dp"
                 android:textSize="16sp"
