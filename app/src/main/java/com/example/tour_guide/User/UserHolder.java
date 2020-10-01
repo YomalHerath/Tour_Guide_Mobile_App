@@ -11,13 +11,13 @@ import com.example.tour_guide.R;
 
 public class UserHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
-    TextView textViewName;
+    TextView textVHotelName;
     View v;
 
     public UserHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.user_view_place_Img);
-        textViewName = itemView.findViewById(R.id.user_view_place_name);
+        textVHotelName= itemView.findViewById(R.id.user_view_place_name);
         v = itemView;
     }
 }

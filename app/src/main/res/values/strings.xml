@@ -64,6 +64,7 @@
     <!--    Place Details-->
     <string name="description">Description</string>
     <string name="province">Situated In</string>
+    <string name="hotel_name">Hotel Name</string>
 
     <!--     Delete Page-->
     <string name="delete">Delete</string>

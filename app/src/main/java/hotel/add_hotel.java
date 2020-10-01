@@ -1,4 +1,5 @@
-package com.example.tour_guide.Admin;
+package  hotel;
+
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -24,11 +25,11 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 
-public class AddTravellingPlace extends AppCompatActivity {
+public class add_hotel extends AppCompatActivity  {
 
     private static final int REQUEST_CODE_IMAGE = 101;
     private ImageView backButton, AddPlaceImage;
-    private EditText AddPlaceName, AddProvinceName, AddDesc;
+    private EditText AddHotelName, ProvinceName, HotelType, Phone, Email, HotelDesc;
 
     private Button choose, submit;
     private StorageTask storageTask;
@@ -43,25 +44,28 @@ public class AddTravellingPlace extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_travelling_place);
+        setContentView(R.layout.activity_add_hotel);
 
         backButton = findViewById(R.id.back_pressed);
         AddPlaceImage = findViewById(R.id.placeImg);
-        AddPlaceName = findViewById(R.id.add_place_name);
-        AddProvinceName = findViewById(R.id.add_province);
-        AddDesc = findViewById(R.id.add_place_desc);
+        AddHotelName = findViewById(R.id.hotel_name);
+        ProvinceName = findViewById(R.id.add_province);
+        HotelType = findViewById(R.id.add_hotel_type);
+        Phone = findViewById(R.id.add_phone);
+        Email = findViewById(R.id.add_Email);
+        HotelDesc = findViewById(R.id.add_hotel_desc);
         choose = findViewById(R.id.choose_btn);
         submit = findViewById(R.id.add_travel_place_submit);
-        progressDialog = new ProgressDialog(AddTravellingPlace.this);
+        progressDialog = new ProgressDialog(add_hotel.this);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
-        storageReference = FirebaseStorage.getInstance().getReference().child("TravelPlaces");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Hotels");
+        storageReference = FirebaseStorage.getInstance().getReference().child("Hotels");
 
         //Back Button Click
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddTravellingPlace.super.onBackPressed();
+                add_hotel.super.onBackPressed();
             }
         });
 
@@ -79,32 +83,28 @@ public class AddTravellingPlace extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String placeName = AddPlaceName.getText().toString();
-                final String placeDescription = AddDesc.getText().toString();
-                final String placeProvince = AddProvinceName.getText().toString();
+                final String HotelName = AddHotelName.getText().toString();
+                final String Description = HotelDesc.getText().toString();
+                final String Province = ProvinceName.getText().toString();
+                final String Type = HotelType.getText().toString();
+                final String HotelPhone = Phone.getText().toString();
+                final String HotelEmail = Email.getText().toString();
+
+
 
                 if (storageTask != null && storageTask.isInProgress()) {
-                    Toast.makeText(AddTravellingPlace.this, "Upload in progress", Toast.LENGTH_SHORT).show();
-
-                } else if (IsImageAdded != false && placeName != null && placeDescription != null && placeProvince != null) {
-                    if (placeName.isEmpty()) {
-                        AddPlaceName.setError("Required Field");
-                    } else if (placeDescription.isEmpty()) {
-                        AddDesc.setError("Required Field");
-                    } else if (placeProvince.isEmpty()) {
-                        AddPlaceName.setError("Required Field");
-                    } else {
-                        uploadfile(placeName, placeDescription, placeProvince);
-                    }
+                    Toast.makeText(add_hotel.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+                } else if (IsImageAdded != false && HotelName != null && Description != null && Province != null) {
+                    uploadfile(HotelName,Description,Province, Type,HotelPhone,HotelEmail);
                 }
             }
         });
 
     }
 
-    private void uploadfile(final String placeName, final String placeDescription, final String placeProvince) {
+    private void uploadfile(final String AddHotelName, final String HotelDesc, final String ProvinceName, final String HotelType, final String Phone, final String Email) {
 
-        progressDialog.setTitle("Travelling Place Adding....");
+        progressDialog.setTitle("Image is Uploading....");
         progressDialog.show();
 
         final String key = databaseReference.push().getKey();
@@ -117,18 +117,20 @@ public class AddTravellingPlace extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         HashMap hashMap = new HashMap();
-                        hashMap.put("PlaceName", placeName);
-                        hashMap.put("Description", placeDescription);
-                        hashMap.put("Province", placeProvince);
+                        hashMap.put("HotelName", AddHotelName);
+                        hashMap.put("Description", HotelDesc);
+                        hashMap.put("Province", ProvinceName);
+                        hashMap.put("HotelType", HotelType);
+                        hashMap.put("Phone", Phone);
+                        hashMap.put("Email", Email);
                         hashMap.put("ImageUrl", uri.toString());
 
                         databaseReference.child(key).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 progressDialog.dismiss();
-                                Toast.makeText(AddTravellingPlace.this, "Data Successfully Uploaded", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), TravellingPlaces.class));
-                                finish();
+                                Toast.makeText(add_hotel.this, "Data Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), add_hotel.class));
                             }
                         });
                     }

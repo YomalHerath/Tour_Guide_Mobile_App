@@ -92,7 +92,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<AddPlace, UserHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull UserHolder holder, final int position, @NonNull AddPlace model) {
-                holder.textViewName.setText(model.getPlaceName());
+                holder.textVHotelName.setText(model.getPlaceName());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
 
                 holder.imageView.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +103,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-                holder.textViewName.setOnClickListener(new View.OnClickListener() {
+                holder.textVHotelName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(UserViewTravellingPlaces.this, UserViewTravellingPlaceDetails.class);
