@@ -17,8 +17,8 @@
         <activity android:name="hotel.admin_hotel_list_view" />
         <activity android:name="hotel.hotel_view_item" />
         <activity android:name="hotel.Admin_view_hotel_details" />
-        <!--<activity android:name="Userhotels.user_view_all_hotels" />-->
-        <!--<activity android:name="Userhotels.user_view_all_hotel_details" />-->
+        <activity android:name="Userhotels.user_view_all_hotels" />
+        <activity android:name="Userhotels.user_view_all_hotel_details" />
         <activity android:name="hotel.admin_all_hotels">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
