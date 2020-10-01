@@ -19,8 +19,9 @@
         <activity android:name="UserEvents.User_View_Single_Event_Details"/>
         <activity android:name="Event.addEvent"/>
         <activity android:name="Event.AdminViewEventSingleDetails" />
-       <!--<activity android:name="       UserEvents.User_View_All_Events    ">-->
-        <activity android:name="Event.admin_view_All_Events">
+       <!--<activity android:name=" UserEvents.User_View_All_Events Event.admin_view_All_Events"      Event.admin_view_All_Events UserEvents.User_View_All_Events    ">-->
+        <!--<activity android:name= "UserEvents.User_View_All_Events"      UserEvents.User_View_All_Events/>-->
+        <activity android:name= "UserEvents.User_View_All_Events">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

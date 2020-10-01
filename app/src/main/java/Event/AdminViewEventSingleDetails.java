@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tour_guide.Admin.AdminViewPlaceDetails;
 import com.example.tour_guide.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -77,15 +78,15 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 databaseReference.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                startActivity(new Intent(getApplicationContext(),admin_view_All_Events.class));
-                                Toast.makeText(AdminViewEventSingleDetails.this,"Deleted successfully !",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), admin_view_All_Events.class));
+                                Toast.makeText(AdminViewEventSingleDetails.this, "Delete Completed...", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
@@ -93,6 +94,5 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
                 });
             }
         });
-
     }
 }

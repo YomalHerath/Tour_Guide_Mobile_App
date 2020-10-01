@@ -1,27 +1,29 @@
 package Event;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.tour_guide.R;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class admin_view_All_Events extends AppCompatActivity {
@@ -57,7 +59,7 @@ public class admin_view_All_Events extends AppCompatActivity {
         });
         LoadData("");
 
-        //searching
+        //Searching
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -89,10 +91,30 @@ public class admin_view_All_Events extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<addNewEvent, EventViewHolder>(options) {
 
             @Override
-            protected void onBindViewHolder(@NonNull EventViewHolder holder, final int position, @NonNull addNewEvent model) {
-                holder.txtVEventName.setText(model.getEventName());
-                holder.txtVDesc.setText(model.getDescription());
+            protected void onBindViewHolder(@NonNull final EventViewHolder holder, final int position, @NonNull final addNewEvent model) {
+                /*holder.txtVEventName.setText(model.getEventName());
+                holder.txtVDesc.setText(model.getDescription());*/
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
+
+                String EventKey =  getRef(position).getKey();
+
+                databaseReference.child(EventKey).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            String eventName = snapshot.child("EventName").getValue().toString();
+                            String description = snapshot.child("Description").getValue().toString();
+
+                            holder.txtVEventName.setText(eventName);
+                            holder.txtVDesc.setText(description);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 //Direct to the Events details screen
                 holder.txtVEventName.setOnClickListener(new View.OnClickListener() {

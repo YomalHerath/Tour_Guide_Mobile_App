@@ -47,6 +47,7 @@
                         android:background="@color/black"
                         android:gravity="center_horizontal"
                         android:padding="5dp"
+                        android:text="event name"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="24sp"
@@ -60,6 +61,7 @@
                         android:layout_below="@id/event_name_textView"
                         android:padding="5dp"
                         android:textColor="@color/black"
+                        android:text="desc name"
                         android:background="@color/colorPrimaryDark"/>
 
                 </RelativeLayout>
