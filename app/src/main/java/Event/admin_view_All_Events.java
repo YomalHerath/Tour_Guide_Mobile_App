@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.tour_guide.R;
-
+import Event.addNewEvent;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -57,7 +57,33 @@ public class admin_view_All_Events extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), addEvent.class));
             }
         });
+
         LoadData("");
+
+        //Searching Part
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString() != null) {
+                    LoadData(editable.toString());
+                } else {
+                    LoadData("");
+                }
+            }
+        });
+    }
+
+        /*LoadData("");
 
         //Searching
         inputSearch.addTextChangedListener(new TextWatcher() {
@@ -80,7 +106,7 @@ public class admin_view_All_Events extends AppCompatActivity {
                 }
             }
         });
-    }
+    }*/
 
     //View All the Events
     private void LoadData(String data) {

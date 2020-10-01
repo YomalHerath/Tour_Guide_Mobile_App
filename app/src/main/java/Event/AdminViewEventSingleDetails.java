@@ -42,13 +42,13 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
         txtVLocInfo = findViewById(R.id.admin_eventLocInfo);
         txtVConInfo = findViewById(R.id.admin_eventConInfo);
         txtVPrice = findViewById(R.id.admin_eventPrice);
-        delete = findViewById(R.id.deleteBtn);
+        delete = findViewById(R.id.delete);
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Events");
         final String EventKey = getIntent().getStringExtra("EventKey");
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Events");
-        storageReference = FirebaseStorage.getInstance().getReference().child("Events");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Events").child(EventKey);
+        storageReference = FirebaseStorage.getInstance().getReference().child("Events").child(EventKey + ".jpg");
 
         dbRef.child(EventKey).addValueEventListener(new ValueEventListener() {
             @Override
@@ -87,12 +87,12 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 startActivity(new Intent(getApplicationContext(), admin_view_All_Events.class));
                                 Toast.makeText(AdminViewEventSingleDetails.this, "Delete Completed...", Toast.LENGTH_SHORT).show();
-                                finish();
                             }
                         });
                     }
                 });
             }
         });
+
     }
 }

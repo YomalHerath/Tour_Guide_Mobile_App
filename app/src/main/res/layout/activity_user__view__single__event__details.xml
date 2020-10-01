@@ -103,13 +103,22 @@
             <TextView
                 android:id="@+id/user_Event_locInfo_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:overScrollMode="always"
                 android:padding="10dp"
                 android:scrollbarStyle="insideInset"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="italic" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="1dp">
 
         </RelativeLayout>
 
