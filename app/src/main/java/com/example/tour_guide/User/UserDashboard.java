@@ -16,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.tour_guide.R;
 import com.google.android.material.navigation.NavigationView;
 
+import UserEvents.User_View_All_Events;
+
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //Variables
@@ -47,6 +49,12 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     //View All Places
     public void viewPlaceCategories(View view) {
         startActivity(new Intent(getApplicationContext(), UserViewTravellingPlaces.class));
+    }
+
+
+    //View All Events
+    public void userViewAllEvents(View view){
+        startActivity(new Intent(getApplicationContext(), User_View_All_Events.class));
     }
 
     //View Categories from Navigation View

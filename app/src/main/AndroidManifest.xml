@@ -15,23 +15,25 @@
         <activity android:name=".User.UserViewTravellingPlaceDetails" />
         <activity android:name=".User.UserViewTravellingPlaces" />
         <activity android:name=".Admin.AdminViewPlaceDetails" />
-        <activity android:name=".Admin.AdminDashboard"/>
         <activity android:name="UserEvents.User_View_Single_Event_Details"/>
         <activity android:name="Event.addEvent"/>
         <activity android:name="Event.AdminViewEventSingleDetails" />
         <activity android:name= "UserEvents.User_View_All_Events"  />
-        <activity android:name= "Event.admin_view_All_Events">
+        <activity android:name= "Event.admin_view_All_Events"/>
+
+        <activity android:name=".Common.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Admin.AdminDashboard"/>
         <activity android:name=".Admin.TravellingPlaces" />
         <activity android:name=".Admin.AddTravellingPlace" />
         <activity android:name=".Common.OnBoarding" />
         <activity android:name=".User.UserDashboard" />
-        <activity android:name=".Common.SplashScreen" />
+
     </application>
 
 </manifest>

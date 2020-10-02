@@ -1,5 +1,5 @@
 package com.example.tour_guide.Admin;
-
+import Event.addEvent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,4 +26,13 @@ public class AdminDashboard extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), TravellingPlaces.class));
     }
 
+    //Add Event
+    public void AddEvent (View view) {
+        startActivity(new Intent(getApplicationContext(), Event.addEvent.class));
+    }
+
+    //view Event
+    public void viewEvents (View view) {
+        startActivity(new Intent(getApplicationContext(), Event.admin_view_All_Events.class));
+    }
 }

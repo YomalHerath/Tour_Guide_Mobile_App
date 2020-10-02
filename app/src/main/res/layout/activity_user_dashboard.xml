@@ -210,6 +210,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
+                            android:onClick="userViewAllEvents"
                             android:background="#00000000"
                             android:padding="20dp"
                             android:text="@string/view"
