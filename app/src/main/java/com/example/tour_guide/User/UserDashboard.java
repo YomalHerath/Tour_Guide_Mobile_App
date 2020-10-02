@@ -16,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.tour_guide.R;
 import com.google.android.material.navigation.NavigationView;
 
+import Userhotels.user_view_all_hotels;
+
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //Variables
@@ -49,6 +51,9 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         startActivity(new Intent(getApplicationContext(), UserViewTravellingPlaces.class));
     }
 
+    public void Viewhotels(View view) {
+        startActivity(new Intent(getApplicationContext(), user_view_all_hotels.class));
+    }
     //View Categories from Navigation View
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

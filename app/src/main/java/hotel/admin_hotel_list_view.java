@@ -22,7 +22,7 @@ public class admin_hotel_list_view extends AppCompatActivity {
 
     RecyclerView recyclerView;
     FirebaseRecyclerOptions<hotel> options;
-    FirebaseRecyclerAdapter<hotel, MyViewHolder> adapter;
+    FirebaseRecyclerAdapter<hotel, MyHotelHolder> adapter;
 
     //.............................Firebase.............................
     DatabaseReference databaseReference;
@@ -46,9 +46,9 @@ public class admin_hotel_list_view extends AppCompatActivity {
     //View All Hotels
     private void LoadData() {
         options = new FirebaseRecyclerOptions.Builder<hotel>().setQuery(databaseReference, hotel.class).build();
-        adapter = new FirebaseRecyclerAdapter<hotel, MyViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<hotel, MyHotelHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull hotel model) {
+            protected void onBindViewHolder(@NonNull MyHotelHolder holder, final int position, @NonNull hotel model) {
                 holder.textVHotelName.setText(model.getHotelName());
                 holder.textViewDesc.setText(model.getDescription());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
@@ -84,10 +84,10 @@ public class admin_hotel_list_view extends AppCompatActivity {
 
             @NonNull
             @Override
-            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public MyHotelHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_hotel_view_item, parent, false);
 
-                return new MyViewHolder(v);
+                return new MyHotelHolder(v);
             }
         };
         adapter.startListening();

@@ -1,32 +1,29 @@
-package hotel;
+package com.example.tour_guide.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tour_guide.HelperClasses.AddPlace;
 import com.example.tour_guide.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class admin_all_hotels extends AppCompatActivity {
+public class TravellingPlaces extends AppCompatActivity {
 
-    EditText inputSearch;
     RecyclerView recyclerView;
-    FloatingActionButton floatingBtn;
-    FirebaseRecyclerOptions<hotel> options;
-    FirebaseRecyclerAdapter<hotel, MyHotelHolder> adapter;
+    FirebaseRecyclerOptions<AddPlace> options;
+    FirebaseRecyclerAdapter<AddPlace, MyViewHolder> adapter;
 
     //.............................Firebase.............................
     DatabaseReference databaseReference;
@@ -35,45 +32,33 @@ public class admin_all_hotels extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_all_hotels);
-
-        floatingBtn = findViewById(R.id.floatingBtn);
-        inputSearch = findViewById(R.id.search);
+        setContentView(R.layout.activity_travelling_places);
 
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Hotels");
-
-        floatingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),add_hotel.class));
-            }
-        });
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
 
         LoadData();
     }
 
-
-
-    //View All Hotels
+    //View All Travelling Places
     private void LoadData() {
-        options = new FirebaseRecyclerOptions.Builder<hotel>().setQuery(databaseReference, hotel.class).build();
-        adapter = new FirebaseRecyclerAdapter<hotel, MyHotelHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<AddPlace>().setQuery(databaseReference, AddPlace.class).build();
+        adapter = new FirebaseRecyclerAdapter<AddPlace, MyViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyHotelHolder holder, final int position, @NonNull hotel model) {
-                holder.textVHotelName.setText(model.getHotelName());
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull AddPlace model) {
+                holder.textViewName.setText(model.getPlaceName());
                 holder.textViewDesc.setText(model.getDescription());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
 
-                //View Hotel Details with Delete Button
+                //View Place Details with Delete Button
                 holder.imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(admin_all_hotels.this, Admin_view_hotel_details.class);
+                        Intent intent = new Intent(TravellingPlaces.this, AdminViewPlaceDetails.class);
                         intent.putExtra("PlaceKey", getRef(position).getKey());
                         startActivity(intent);
                     }
@@ -82,16 +67,16 @@ public class admin_all_hotels extends AppCompatActivity {
                 holder.textViewDesc.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(admin_all_hotels.this, Admin_view_hotel_details.class);
+                        Intent intent = new Intent(TravellingPlaces.this, AdminViewPlaceDetails.class);
                         intent.putExtra("PlaceKey", getRef(position).getKey());
                         startActivity(intent);
                     }
                 });
 
-                holder.textVHotelName.setOnClickListener(new View.OnClickListener() {
+                holder.textViewName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(admin_all_hotels.this, Admin_view_hotel_details.class);
+                        Intent intent = new Intent(TravellingPlaces.this, AdminViewPlaceDetails.class);
                         intent.putExtra("PlaceKey", getRef(position).getKey());
                         startActivity(intent);
                     }
@@ -100,10 +85,10 @@ public class admin_all_hotels extends AppCompatActivity {
 
             @NonNull
             @Override
-            public MyHotelHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_hotel_view_item, parent, false);
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_travelling_place_item, parent, false);
 
-                return new MyHotelHolder(v);
+                return new MyViewHolder(v);
             }
         };
         adapter.startListening();

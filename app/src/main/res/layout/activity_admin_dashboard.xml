@@ -121,6 +121,7 @@
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+
             app:cardCornerRadius="8dp"
             android:layout_margin="10dp"
             app:cardElevation="8dp">
@@ -158,6 +159,7 @@
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+
             app:cardCornerRadius="8dp"
             android:layout_margin="10dp"
             app:cardElevation="8dp">
@@ -195,6 +197,7 @@
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:onClick="AddHospitality"
             app:cardCornerRadius="8dp"
             android:layout_margin="10dp"
             app:cardElevation="8dp">
@@ -207,9 +210,9 @@
                 android:layout_gravity="center_horizontal|center_vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
+                    android:layout_width="66dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/nav_add_icon"/>
+                    android:src="@drawable/nav_add_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -232,6 +235,7 @@
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:onClick="ViewHospitality"
             app:cardCornerRadius="8dp"
             android:layout_margin="10dp"
             app:cardElevation="8dp">

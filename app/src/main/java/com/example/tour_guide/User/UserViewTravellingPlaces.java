@@ -1,6 +1,5 @@
 package com.example.tour_guide.User;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -40,8 +39,8 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_view_travelling_places);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
@@ -84,33 +83,15 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
         });
     }
 
-    //View All Travelling Places
     private void LoadData(String data) {
         Query query = databaseReference.orderByChild("PlaceName").startAt(data).endAt(data + "\uf8ff");
 
         options = new FirebaseRecyclerOptions.Builder<AddPlace>().setQuery(query, AddPlace.class).build();
         adapter = new FirebaseRecyclerAdapter<AddPlace, UserHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull UserHolder holder, final int position, @NonNull AddPlace model) {
-                holder.textVHotelName.setText(model.getPlaceName());
+            protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull AddPlace model) {
+                holder.textViewName.setText(model.getPlaceName());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
-
-                holder.imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(UserViewTravellingPlaces.this, UserViewTravellingPlaceDetails.class);
-                        intent.putExtra("PlaceKey", getRef(position).getKey());
-                        startActivity(intent);
-                    }
-                });
-                holder.textVHotelName.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(UserViewTravellingPlaces.this, UserViewTravellingPlaceDetails.class);
-                        intent.putExtra("PlaceKey", getRef(position).getKey());
-                        startActivity(intent);
-                    }
-                });
             }
 
             @NonNull

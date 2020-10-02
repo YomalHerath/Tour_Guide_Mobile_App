@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tour_guide.R;
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+class MyHotelHolder extends RecyclerView.ViewHolder {
 
     public ImageView imageView;
     public TextView textVHotelName;
     public TextView textViewDesc;
     View v;
 
-    public MyViewHolder(@NonNull View itemView) {
+    public MyHotelHolder(@NonNull View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.HotelImgView);
         textVHotelName = itemView.findViewById(R.id.Hotel_name_textView);
