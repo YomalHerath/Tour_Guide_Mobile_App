@@ -94,10 +94,32 @@ public class add_hotel extends AppCompatActivity  {
 
                 if (storageTask != null && storageTask.isInProgress()) {
                     Toast.makeText(add_hotel.this, "Upload in progress", Toast.LENGTH_SHORT).show();
-                } else if (IsImageAdded != false && HotelName != null && Description != null && Province != null) {
-                    uploadfile(HotelName,Description,Province, Type,HotelPhone,HotelEmail);
+                }else if (IsImageAdded != false && HotelName != null && Description != null && Province != null) {
+                    if(HotelName.isEmpty()){
+                        AddHotelName.setError("Required");
+                        Toast.makeText(add_hotel.this, "Hotel Name is Empty !", Toast.LENGTH_LONG).show();
+                    }else if(Province.isEmpty()){
+                        ProvinceName.setError("Required");
+                        Toast.makeText(add_hotel.this, "Province is Empty !", Toast.LENGTH_LONG).show();
+                    }else if(Type.isEmpty()) {
+                        HotelType.setError("Required");
+                        Toast.makeText(add_hotel.this, "Hotel Type is Empty !", Toast.LENGTH_LONG).show();
+                    }else if(HotelPhone.isEmpty()) {
+                        Phone.setError("Required");
+                        Toast.makeText(add_hotel.this, "Phone is Empty !", Toast.LENGTH_LONG).show();
+                    }else if(HotelEmail.isEmpty()) {
+                        Email.setError("Required");
+                        Toast.makeText(add_hotel.this, "Email is Empty !", Toast.LENGTH_LONG).show();
+                    }else if(Description.isEmpty()){
+                        HotelDesc.setError("Required");
+                        Toast.makeText(add_hotel.this, "Description is Empty !", Toast.LENGTH_LONG).show();
+
+                    }else {
+                        uploadfile(HotelName, Description, Province, Type, HotelPhone, HotelEmail);
+                    }
                 }
             }
+
         });
 
     }
@@ -130,7 +152,7 @@ public class add_hotel extends AppCompatActivity  {
                             public void onSuccess(Void aVoid) {
                                 progressDialog.dismiss();
                                 Toast.makeText(add_hotel.this, "Data Successfully Uploaded", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), add_hotel.class));
+                                startActivity(new Intent(getApplicationContext(),admin_all_hotels .class));
                             }
                         });
                     }
