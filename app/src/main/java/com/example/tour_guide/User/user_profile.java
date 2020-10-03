@@ -47,5 +47,15 @@ public class user_profile extends AppCompatActivity {
       );
     }
 
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), login.class));
+        finish();
+    }
+
+    public void makeReviews(View view) {
+        startActivity(new Intent(getApplicationContext(), MakeReviews.class));
+
+    }
 
 }

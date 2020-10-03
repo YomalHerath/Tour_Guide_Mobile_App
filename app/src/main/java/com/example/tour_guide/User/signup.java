@@ -38,6 +38,11 @@ public class signup extends AppCompatActivity {
     }
 
 
+    public void clickToLogin(View view) {
+        startActivity(new Intent(getApplicationContext(),login.class));
+        finish();
+    }
+
 }
 
 
