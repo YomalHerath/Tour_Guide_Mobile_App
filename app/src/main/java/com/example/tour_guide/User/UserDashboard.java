@@ -14,6 +14,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.tour_guide.R;
+import com.example.tour_guide.UserEvents.User_View_All_Events;
+import com.example.tour_guide.Userhotels.user_view_all_hotels;
 import com.google.android.material.navigation.NavigationView;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,6 +51,16 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         startActivity(new Intent(getApplicationContext(), UserViewTravellingPlaces.class));
     }
 
+    //View All Events
+    public void viewEvents(View view) {
+        startActivity(new Intent(getApplicationContext(), User_View_All_Events.class));
+    }
+
+    //view All Hotels
+    public void viewHotels(View view) {
+        startActivity(new Intent(getApplicationContext(), user_view_all_hotels.class));
+    }
+
     //View Categories from Navigation View
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -57,6 +69,12 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_place_categories:
                 startActivity(new Intent(getApplicationContext(), UserViewTravellingPlaces.class));
+                break;
+            case R.id.nav_events:
+                startActivity(new Intent(getApplicationContext(), User_View_All_Events.class));
+                break;
+            case R.id.nav_hotels:
+                startActivity(new Intent(getApplicationContext(), user_view_all_hotels.class));
                 break;
         }
         return true;
