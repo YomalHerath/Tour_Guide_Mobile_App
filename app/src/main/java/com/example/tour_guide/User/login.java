@@ -65,11 +65,11 @@ public class  login extends AppCompatActivity {
                     return;
                 }
 
-//                if (username.getEditText().getText().toString().equals("admin") && pass.getEditText().getText().toString().equals("admin")){
-//                    Toast.makeText(login.this, "ADMIN ACCESS DONE!", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(getApplicationContext(),AdminDashboard.class));
-//
-//                }
+                if (username.getEditText().getText().toString().equals("admin") && pass.getEditText().getText().toString().equals("admin")){
+                    Toast.makeText(login.this, "ADMIN ACCESS DONE!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(),AdminDashboard.class));
+
+                }
 
 
                 fAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
