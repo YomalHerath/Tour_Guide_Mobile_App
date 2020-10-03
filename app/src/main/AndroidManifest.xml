@@ -14,14 +14,21 @@
         android:theme="@style/AppTheme">
         <activity android:name=".User.UserViewTravellingPlaceDetails" />
         <activity android:name=".User.UserViewTravellingPlaces" />
+
         <activity android:name=".Admin.AdminViewPlaceDetails" />
-        <activity android:name=".Admin.AdminDashboard">
+        <activity android:name=".User.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".User.signup"/>
+        <activity android:name=".User.MakeReviews"/>
+        <activity android:name=".Admin.AdminDashboard"/>
+        <activity android:name=".User.user_profile"/>
+        <activity android:name=".User.make_review"/>
+        <activity android:name=".User.review_list"/>
         <activity android:name=".Admin.TravellingPlaces" />
         <activity android:name=".Admin.AddTravellingPlace" />
         <activity android:name=".Common.OnBoarding"></activity>

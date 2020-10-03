@@ -14,4 +14,10 @@
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
+    <style name="Widget.MaterialComponents.TextInputLayout">@a/a</style>
+
+    <style name="Widget">@aa/aa</style>
+
+    <style name="Widget.MaterialComponents">@aaa/aaa</style>
+
 </resources>
