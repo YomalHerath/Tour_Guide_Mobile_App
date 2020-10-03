@@ -26,6 +26,11 @@ import com.google.firebase.database.Query;
 
 public class review_list extends AppCompatActivity {
 
+    RecyclerView CustomerRecyclerView;
+    FirebaseRecyclerOptions<viewReviews> options;
+    FirebaseRecyclerAdapter<viewReviews, viewReviewsholder> adapter;
+    DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,14 @@ public class review_list extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_review_list);
 
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Reviews");
+
+        CustomerRecyclerView = findViewById(R.id.CustomerRecyclerView);
+        CustomerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        CustomerRecyclerView.setHasFixedSize(true);
+
+        viewReviewsDetails();
+
         backBtn = findViewById(R.id.back_pressed);
         backBtn.setOnClickListener(new make_review.OnClickListener() {
             @Override
@@ -43,5 +56,32 @@ public class review_list extends AppCompatActivity {
             }
         );
     }
+
+    private void viewReviewsDetails() {
+
+        options = new FirebaseRecyclerOptions.Builder<viewReviews>().setQuery(databaseReference, viewReviews.class).build();
+        adapter = new FirebaseRecyclerAdapter<viewReviews, viewReviewsholder>(options){
+
+            @Override
+            protected void onBindViewHolder(@NonNull final viewReviewsholder holder, final int position, @NonNull final viewReviews model) {
+
+                holder.textViewPlace.setText(model.getRPlace());
+                holder.textViewDescription.setText(model.getRDescription());
+
+            }
+
+            @NonNull
+            @Override
+            public viewReviewsholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewreviews_details, parent,false);
+                return new viewReviewsholder(v);
+            }
+
+        };
+        adapter.startListening();
+        CustomerRecyclerView.setAdapter(adapter);
+
+    }
+
 
 }
