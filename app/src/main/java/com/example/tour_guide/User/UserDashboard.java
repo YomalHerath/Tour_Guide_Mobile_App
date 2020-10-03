@@ -15,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.tour_guide.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -57,6 +58,16 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_place_categories:
                 startActivity(new Intent(getApplicationContext(), UserViewTravellingPlaces.class));
+                break;
+            case R.id.nav_login:
+                startActivity(new Intent(getApplicationContext(), login.class));
+                break;
+            case R.id.nav_profile:
+                startActivity(new Intent(getApplicationContext(), user_profile.class));
+                break;
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), login.class));
                 break;
         }
         return true;
@@ -111,6 +122,15 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             drawerLayout.closeDrawer(GravityCompat.START);
         } else
             super.onBackPressed();
+    }
+
+    //view reviewList
+    public void viewReviewList(View view) {
+        startActivity(new Intent(getApplicationContext(), review_list.class));
+    }
+
+    public void profile(View view) {
+        startActivity(new Intent(getApplicationContext(), user_profile.class));
     }
 
 }

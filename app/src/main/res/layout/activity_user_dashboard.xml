@@ -44,6 +44,7 @@
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:onClick="profile"
                 android:background="@color/banner_background"
                 android:padding="5dp"
                 android:src="@drawable/user_profile_icon" />
@@ -258,6 +259,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
                             android:background="#00000000"
+                            android:onClick="viewReviewList"
                             android:padding="20dp"
                             android:text="@string/view"
                             android:textColor="@color/white"
