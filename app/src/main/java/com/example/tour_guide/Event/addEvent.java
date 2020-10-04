@@ -160,6 +160,7 @@ public class addEvent extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(addEvent.this, "Data Added Successfully !", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(getApplicationContext(), admin_view_All_Events.class));
+                                finish();
                             }
                         });
                     }

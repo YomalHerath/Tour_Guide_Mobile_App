@@ -3,6 +3,6 @@
     <solid android:color="#000000"></solid>
     <size android:height="50sp" android:width="150pt" />
 
-    <stroke  android:width="48dp" android:color="#FFFFFF" android:text="@string/ClickLogin" android:textColor="#FFD300"/>
+    <stroke android:width="48dp" android:color="#FFFFFF" android:text="@string/ClickLogin" android:textColor="#FFD300"/>
 
 </shape>

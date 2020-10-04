@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".User.UserViewTravellingPlaceDetails" />
+<!--        <activity android:name=".User.UserViewTravellingPlaceDetails" />-->
         <activity android:name=".User.UserViewTravellingPlaces" />
         <activity android:name=".Admin.AdminViewPlaceDetails" />
         <activity android:name=".hotel.user_view_hotel_item" />
@@ -28,13 +28,13 @@
         <activity android:name=".Userhotels.user_view_all_hotels" />
         <activity android:name=".Userhotels.user_view_all_hotel_details" />
         <activity android:name=".hotel.admin_all_hotels"/>
-        <activity android:name=".Admin.AdminDashboard">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--        <activity android:name=".Admin.AdminDashboard">-->
+        <!--&lt;!&ndash;            <intent-filter>&ndash;&gt;-->
+        <!--&lt;!&ndash;                <action android:name="android.intent.action.MAIN" />&ndash;&gt;-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+        <!--&lt;!&ndash;                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;-->
+        <!--&lt;!&ndash;            </intent-filter>&ndash;&gt;-->
+        <!--        </activity>-->
         <activity android:name=".Common.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,13 +42,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".User.signup"/>
+        <activity android:name=".User.MakeReviews"/>
+        <activity android:name=".User.user_profile"/>
+        <activity android:name=".User.make_review"/>
+        <activity android:name=".User.review_list"/>
         <activity android:name=".Common.OnBoarding" />
         <activity android:name=".User.UserDashboard"/>
         <activity android:name=".Admin.TravellingPlaces" />
         <activity android:name=".Admin.AddTravellingPlace" />
-        <activity android:name=".Common.OnBoarding"></activity>
-        <activity android:name=".User.UserDashboard" />
-        <activity android:name=".Common.SplashScreen" />
     </application>
 
 </manifest>

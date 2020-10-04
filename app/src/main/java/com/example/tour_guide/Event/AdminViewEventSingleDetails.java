@@ -95,6 +95,7 @@ public class AdminViewEventSingleDetails extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 startActivity(new Intent(getApplicationContext(), admin_view_All_Events.class));
                                 Toast.makeText(AdminViewEventSingleDetails.this, "Delete Completed...", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         });
                     }
