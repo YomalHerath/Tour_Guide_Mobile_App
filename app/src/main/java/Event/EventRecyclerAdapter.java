@@ -1,4 +1,4 @@
-package com.example.tour_guide.HelperClasses;
+package Event;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,24 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import Event.EventRecyclerAdapter;
 import com.bumptech.glide.Glide;
 import com.example.tour_guide.R;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdapter.ViewHolder> {
 
     private static final String Tag = "RecyclerView";
     private Context context;
-    private List<AddPlace> addPlaceList;
+    private List<addNewEvent> eventList;
 
-    public RecyclerAdapter(Context context, List<AddPlace>  addPlaceList) {
+    public EventRecyclerAdapter(Context context, List<addNewEvent> eventList) {
         this.context = context;
-        this.addPlaceList = addPlaceList;
+        this.eventList = eventList;
     }
 
     @Override
@@ -38,34 +37,34 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        AddPlace addPlace = addPlaceList.get(position);
+        addNewEvent addNewEvent = eventList.get(position);
         //TextView
-        holder.textView.setText(addPlaceList.get(position).getPlaceName());
-        holder.textView1.setText(addPlaceList.get(position).getDescription());
+        holder.textView.setText(eventList.get(position).getEventName());
+        holder.textView1.setText(eventList.get(position).getDescription());
 
         //ImageView
         Glide.with(context)
-                .load(addPlaceList.get(position).getImageUrl())
+                .load(eventList.get(position).getImageUrl())
                 .into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return addPlaceList.size();
+        return eventList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textView;
-        TextView textView1;
+        TextView  textView1;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.placeImgView);
-            textView = itemView.findViewById(R.id.place_name_textView);
-            textView1 = itemView.findViewById(R.id.place_desc_textView);
+            imageView = itemView.findViewById(R.id.eventImgView);
+            textView = itemView.findViewById(R.id.event_name_textView);
+            textView1 = itemView.findViewById(R.id.event_desc_textView);
         }
     }
 }

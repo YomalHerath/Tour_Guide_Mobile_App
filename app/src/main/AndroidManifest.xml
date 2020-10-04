@@ -46,6 +46,9 @@
         <activity android:name=".User.UserDashboard"/>
         <activity android:name=".Admin.TravellingPlaces" />
         <activity android:name=".Admin.AddTravellingPlace" />
+        <activity android:name=".Common.OnBoarding"></activity>
+        <activity android:name=".User.UserDashboard" />
+        <activity android:name=".Common.SplashScreen" />
     </application>
 
 </manifest>
