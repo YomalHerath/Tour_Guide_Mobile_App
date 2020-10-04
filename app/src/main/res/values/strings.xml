@@ -34,9 +34,7 @@
 
     <!--    Main Menu-->
     <string name="home">Home</string>
-    <string name="place_categories">All Travelling Places</string>
-    <string name="enevnt_nav">All Events</string>
-    <string name="hotel_nav">All Hospitality Places</string>
+    <string name="place_categories">All Places</string>
     <string name="add_places">Add Missing Places</string>
     <string name="add_hotels">Add Hotel/Restaurant</string>
     <string name="add_events">Add Missing Events</string>
@@ -70,7 +68,7 @@
     <!--     Delete Page-->
     <string name="delete">Delete</string>
 
-    <!-- Events -->
+    <!--   Events -->
     <string name="add_event">Add Event</string>
     <string name="event_name">Event Name</string>
     <string name="place_name">Place Name</string>
@@ -85,4 +83,6 @@
     <string name="about_event">About Event</string>
     <string name="loc_info">Location Information</string>
     <string name="con_info">Contact Information</string>
+
+
 </resources>
