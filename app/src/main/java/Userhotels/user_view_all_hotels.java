@@ -1,5 +1,6 @@
-package com.example.tour_guide.User;
+package Userhotels;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,7 +18,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tour_guide.HelperClasses.AddPlace;
 import com.example.tour_guide.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -26,14 +26,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
-public class UserViewTravellingPlaces extends AppCompatActivity {
+import hotel.hotel;
+
+public class user_view_all_hotels extends AppCompatActivity {
 
     EditText inputSearch;
     ImageView backBtn;
     DrawerLayout drawerLayout;
     RecyclerView recyclerView;
-    FirebaseRecyclerOptions<AddPlace> options;
-    FirebaseRecyclerAdapter<AddPlace, UserHolder> adapter;
+    FirebaseRecyclerOptions<hotel> options;
+    FirebaseRecyclerAdapter<hotel, userHotelHolder> adapter;
     DatabaseReference databaseReference;
 
 
@@ -41,9 +43,9 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_view_travelling_places);
+        setContentView(R.layout.activity_user_view_all_hotels);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Hotels");
         inputSearch = findViewById(R.id.search);
         recyclerView = findViewById(R.id.UserRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -54,7 +56,7 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserViewTravellingPlaces.super.onBackPressed();
+                user_view_all_hotels.super.onBackPressed();
             }
         });
 
@@ -80,35 +82,58 @@ public class UserViewTravellingPlaces extends AppCompatActivity {
                     LoadData("");
                 }
             }
+
         });
     }
 
     private void LoadData(String data) {
-        Query query = databaseReference.orderByChild("PlaceName").startAt(data).endAt(data + "\uf8ff");
+        Query query = databaseReference.orderByChild("HotelName").startAt(data).endAt(data + "\uf8ff");
 
-        options = new FirebaseRecyclerOptions.Builder<AddPlace>().setQuery(query, AddPlace.class).build();
-        adapter = new FirebaseRecyclerAdapter<AddPlace, UserHolder>(options) {
+        options = new FirebaseRecyclerOptions.Builder<hotel>().setQuery(query, hotel.class).build();
+        adapter = new FirebaseRecyclerAdapter<hotel, userHotelHolder>(options) {
+
+
             @Override
-            protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull AddPlace model) {
-                holder.textViewName.setText(model.getPlaceName());
+            protected void onBindViewHolder(@NonNull userHotelHolder holder, final int position, @NonNull hotel model) {
+                holder.textVHotelName.setText(model.getHotelName());
                 Picasso.get().load(model.getImageUrl()).into(holder.imageView);
+
+                holder.imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(user_view_all_hotels.this, user_view_all_hotel_details.class);
+                        intent.putExtra("PlaceKey", getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
+                holder.textVHotelName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(user_view_all_hotels.this, user_view_all_hotel_details.class);
+                        intent.putExtra("PlaceKey", getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
             }
+
 
             @NonNull
             @Override
-            public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_place_item, parent, false);
-                return new UserHolder(v);
+            public userHotelHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_view_hotel_item, parent, false);
+                return new userHotelHolder(v);
             }
         };
+        ;
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
 
-    public void onBackPressed() {
+    public void onBackPressed () {
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else
             super.onBackPressed();
     }
 }
+

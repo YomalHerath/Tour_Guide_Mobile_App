@@ -44,7 +44,7 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
 
         ref = FirebaseDatabase.getInstance().getReference().child("TravelPlaces");
 
-        final String PlaceKey = getIntent().getStringExtra("PlaceKey");
+        String PlaceKey = getIntent().getStringExtra("PlaceKey");
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelPlaces").child(PlaceKey);
         storageReference = FirebaseStorage.getInstance().getReference().child("TravelPlaces").child(PlaceKey + ".jpg");
@@ -82,12 +82,12 @@ public class AdminViewPlaceDetails extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 startActivity(new Intent(getApplicationContext(), TravellingPlaces.class));
                                 Toast.makeText(AdminViewPlaceDetails.this, "Delete Completed...", Toast.LENGTH_SHORT).show();
-                                finish();
                             }
                         });
                     }
                 });
             }
         });
+
     }
 }

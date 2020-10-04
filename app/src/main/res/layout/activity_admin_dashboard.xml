@@ -122,7 +122,6 @@
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:onClick="AddEvent"
             app:cardCornerRadius="8dp"
             android:layout_margin="10dp"
             app:cardElevation="8dp">
@@ -161,7 +160,6 @@
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:onClick="viewEvents"
             app:cardCornerRadius="8dp"
             android:layout_margin="10dp"
             app:cardElevation="8dp">
