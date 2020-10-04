@@ -17,6 +17,7 @@ import com.example.tour_guide.R;
 import com.example.tour_guide.UserEvents.User_View_All_Events;
 import com.example.tour_guide.Userhotels.user_view_all_hotels;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -129,6 +130,15 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             drawerLayout.closeDrawer(GravityCompat.START);
         } else
             super.onBackPressed();
+    }
+
+    //view reviewList
+    public void viewReviewList(View view) {
+        startActivity(new Intent(getApplicationContext(), review_list.class));
+    }
+
+    public void profile(View view) {
+        startActivity(new Intent(getApplicationContext(), user_profile.class));
     }
 
 }
