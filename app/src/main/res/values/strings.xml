@@ -71,7 +71,7 @@
     <!--     Delete Page-->
     <string name="delete">Delete</string>
 
-    <!-- Events -->
+    <!--   Events -->
     <string name="add_event">Add Event</string>
     <string name="event_name">Event Name</string>
     <string name="place_name">Place Name</string>
@@ -231,4 +231,6 @@
     <string name="makereviewheader">Make Your Review</string>
     <string name="makereviews">Write here....</string>
     <string name="signupusername">User Name</string>
+
+
 </resources>
